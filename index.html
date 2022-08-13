@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>Universe-Report 2022</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/star.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- googlefont kaisei tokumin import 参考https://pengi-n.co.jp/blog/googlefont/-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Tokumin:wght@800&display=swap" rel="stylesheet">
+    <!--モーダル用にmodaal.css CDNインポート-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.css"
+        integrity="sha512-aP7aan8VuwHmiATRE1bw2jvPkTB/f/XMXRJhRablTFz9mQJpB/Yf387XiQueF/w/ocuI6/3zvnIMGi7ghNzTwQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--FontAwesome CDN import-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- 自作cssインポート -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="site-logo">
+            <h1 class="site-title animation-right"><i class="fa-solid fa-earth-asia"></i> 自由研究</h1>
+            <!-- <img class="logo-image" src="img/logo_pixabay_earth-gb8731bd43_640.jpg" alt="logo"> -->
+        </div>
+        <nav>
+            <ul class="nav-menu animation-right">
+                <li><a href="#about"><i class="fa-solid fa-book"></i> サイトの説明</a></li>
+                <li><a href="#usage"><i class="fa-solid fa-book"></i> サイトの使い方</a></li>
+                <li><a href="#solar"><i class="fa-solid fa-sun"></i> 太陽系</a></li>
+                <li><a href="#kic"><i class="fa-solid fa-star"></i> KIC 8462852連星系</a></li>
+                <li><a href="#Teegarden"><i class="fa-solid fa-sun-plant-wilt"></i> ティーガーデン星系</a></li>
+                <li><a href="#diamond"><i class="fa-solid fa-gem"></i> かに座55番連星系</a></li>
+            </ul>
+            <ul class="nav-sns animation-right">
+                <li><a href="https://ja.wikipedia.org/wiki/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8"
+                        target="_blank"><i class="fa-brands fa-wikipedia-w"></i> Wikipedia</a></li>
+                <li><a href="https://store.steampowered.com/app/230290/Universe_Sandbox/?l=japanese"
+                        target="_blank"><i class="fa-brands fa-steam"></i> Universe Sandbox 2</a></li>
+                <li><a href="https://store.steampowered.com/app/1043390/FlowScape/?l=japanese"
+                        target="_blank"><i class="fa-brands fa-steam"></i> FlowScape</a></li>
+            </ul>
+        </nav>
+
+        <!--ハンバーガーメニュー-->
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!--ハンバーガーメニュー押下時の背景設定用-->
+        <div id="mask"></div>
+    </header>
+    <div class="container">
+        <main>
+            <div class="video">
+                <video class="bg-video" src="video/pixabay_Space18492.mp4" loop="" autoplay="" muted=""
+                    playsinline=""></video>
+            </div>
+
+            <section id="about" class="about wrapper">
+                <h2 class="sec-title">サイトの説明</h2>
+                <p>このサイトは、私が夏休みの自由研究で作ったものです。
+                    <br>
+                    私が興味を持った天体の情報をまとめています。
+                    <br>
+                    このサイトを見た皆さんも興味のあるところだけでも見てください
+                </p>
+                <br>
+                <br>
+                <h3 class="sub-title">言葉の説明</h3>
+                <dl>
+                    <dt>恒星</dt>
+                    <dd>太陽や<a href="" target="_blank"><a
+                                href="https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AA%E3%82%A6%E3%82%B9#:~:text=%E3%82%B7%E3%83%AA%E3%82%A6%E3%82%B9%EF%BC%88Sirius%EF%BC%89%E3%81%AF%E3%80%81%E3%81%8A%E3%81%8A%E3%81%84,%E5%BA%A7%CE%B1%E6%98%9F%E3%80%8D%E3%81%A7%E3%81%82%E3%82%8B%E3%80%82"
+                                target="_blank">シリウス</a></a>のように<a
+                            href="https://ja.wikipedia.org/wiki/%E6%A0%B8%E8%9E%8D%E5%90%88%E5%8F%8D%E5%BF%9C"
+                            target="_blank">核融合反応</a>で自ら輝いている天体のこと</dd>
+                    <dt>惑星</dt>
+                    <dd>地球や火星のように自ら輝いておらず、恒星の周りを公転している天体のこと</dd>
+                    <dt>衛星</dt>
+                    <dd>月のように惑星の周りを公転している天体のこと</dd>
+                    <dt>1光年</dt>
+                    <dd>光が一年で進む距離で約9兆5000億km (光は一秒で地球を7周半する)</dd>
+                    <dt>1パーセク</dt>
+                    <dd>主に天文学で使われる距離の単位であり3.26光年</dd>
+                    <dt>連星系</dt>
+                    <dd>重力的に結びついている恒星が2つ以上ある星系のこと(例:<a
+                            href="https://ja.wikipedia.org/wiki/%E3%82%B1%E3%83%B3%E3%82%BF%E3%82%A6%E3%83%AB%E3%82%B9%E5%BA%A7%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1%E6%98%9F"
+                            target="_blank">ケンタウルス座α星</a>)
+                    <dt>見かけの等級</dt>
+                    <dd>主に地球から見た天体の明るさ(数が低いほど明るく6等級以上は肉眼で見えない)</dd>
+                    <dt>絶対等級</dt>
+                    <dd>10パーセクの距離から天体を見たときの等級</dd>
+                    </dd>
+                </dl>
+            </section>
+            <section id="usage" class="usage wrapper">
+                <h2 class="sec-title">サイトの使い方</h2>
+                <ol>
+                    <li>メニューから見たい星の情報に飛びます(スマホの場合は右上のハンバーガーメニューから)</li>
+                    <li>見たい星の画像や動画をクリックします</li>
+                    <li>説明が表示されるので読みます</li>
+
+                </ol>
+                <br>
+                <p><a>このような色</a>になっている文字をクリックすると外部サイトに飛べます</p>
+
+
+
+            </section>
+            <!--太陽系-->
+            <section id="solar" class="categoly wrapper">
+                <h2 class="sec-title">太陽系の岩石惑星</h2>
+                <ul class="image-list animation-bottom">
+                    <li>
+                        <a class="modaal-iframe" href="./doc/earth.html">
+                            <video src="video/pixabay_Earth9183.mp4" loop="" autoplay="" muted=""
+                                playsinline=""></video>
+                            <p class="name">地球</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="./doc/mercury.html">
+                            <img src="img/250px-Mercury_in_color_-_Prockter07_centered.jpg" alt="">
+                            <p class="name">水星</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="./doc/mars.html"></a>
+                            <img src="img/375px-OSIRIS_Mars_true_color.jpg" alt="project3">
+                            <p class="name">火星</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="./doc/venus.html"></a>
+                            <img src="img/330px-Galileo_Venus_global_view.jpg" alt="project4">
+                            <p class="name">金星</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!--KIC 8462852連星系-->
+            <section id="kic" class="categoly wrapper">
+                <h2 class="sec-title">KIC 8462852連星系</h2>
+                <ul class="image-list animation-bottom">
+                    <li>
+                        <a class="modaal-iframe" href="./doc/kic.html">
+                            <img src="img/KIC_8462852A.jpg" alt="project2">
+                            <p class="name">KIC 8462852A（タビーの星）の概要</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="./doc/kic2.html">
+                            <img src="img/KIC_8462852B.jpg" alt="project2">
+                            <p class="name">KIC 8462852Bの概要</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="./doc/kic3.html">
+                            <img src="img/375px-PIA20053-PossibleCometSwarmAroundKIC8462852-ArtistConcept-20151124.jpg"
+                                alt="project3">
+                            <p class="name">KIC 8462852Aの減光</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="./doc/Fermis_paradox.html">
+                            <img src="img/stellaris_dyson-100712617-orig-768x432 .jpg" alt="project4">
+                            <p class="name">フェルミのパラドックス</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!--ティーガーデン星-->
+            <section id="Teegarden" class="categoly wrapper">
+                <h2 class="sec-title">ティーガーデン星</h2>
+                <ul class="image-list animation-bottom">
+                    <li>
+                        <a class="modaal-iframe" href="doc/Teegardens-Star.html">
+                            <img src="img/Teegarden's Star.jpg" alt="project2">
+                            <p class="name">ティーガーデン星(恒星)の概要</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="./doc/Teegarden-B.html">
+                            <img src="img/Teegarden's Star b.jpg" alt="project2">
+                            <p class="name">地球に最も似ている惑星「ティーガーデンb」の概要</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="./doc/Teegarden-C.html">
+                            <img src="img/Teegarden's Star c.jpg" alt="project3">
+                            <p class="name">ティーガーデンcの概要</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="doc/Teegarden_life.html">
+                            <img src="img/Teegarden's Star life.jpg" alt="project4">
+                            <p class="name">ティーガーデン星系の生命
+
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!--かに座55番連星系-->
+            <section id="diamond" class="categoly wrapper">
+                <h2 class="sec-title">かに座55番連星系</h2>
+                <ul class="image-list animation-bottom">
+                    <li>
+                        <a class="modaal-iframe" href="doc/Teegardens-Star.html">
+                            <img src="img/55Cancri.jpg" alt="project2">
+                            <p class="name">かに座55番星Aの概要</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="./doc/Teegarden-B.html">
+                            <img src="img/55Cancri_B.jpg" alt="project2">
+                            <p class="name">かに座55番星Bの概要</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="modaal-iframe" href="./doc/Teegarden-B.html">
+                            <img src="img/55Cancri_e.jpg" alt="project2">
+                            <p class="name">ダイヤモンドで出来た惑星「かに座55番星e」の概要</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <footer class="footer wrapper">
+            <a class="to-top" href="#"></a>
+            <p>Copyright © T.N All Rights Reserved.</p>
+        </footer>
+    </div>
+
+
+    <!-- jQuery minified CDNインポート -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!--モーダル用にmodaal.js CDNインポート-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/js/modaal.js"
+        integrity="sha512-ZWENh4X1BYuapk+vQBN9whMYb0baHZMiS7uHX7rt9pxzZRyttOkfbc1+LOLoJy48LrdCBTo4FlF/WpTa8P1+tw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--ふわっと表示のためのscrollreveal.js CDNインポート-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- 自作jsインポート-->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

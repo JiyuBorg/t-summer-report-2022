@@ -1,0 +1,528 @@
+/*-------------------------------------------
+共通要素
+-------------------------------------------*/
+@charset "UTF-8";
+/*最上段のhtmlタグでfont-size 100%とすることでブラウザの種類や状態にあわせて変更するようにmagic*/
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+  }
+
+/*画像の大きさの最大値が親要素のwidth幅の100%となるように調整し、親要素にあわせてレイアウト最適化magic*/
+img{
+    max-width: 100%;
+}
+
+/*意図しない余白防止*/
+*{
+    margin: 0; /*余白margin0*/
+    padding: 0; /*余白padding0*/
+}
+
+/* bodyでベースのフォント色とサイズ指定*/
+body {
+    color: #fff;
+    font-family: 'Kaisei Tokumin', serif;
+    font-weight: 900;
+    background-color: rgb(23, 27, 44);
+}
+
+/*aタグの装飾なし+色変更*/
+a{
+    text-decoration: none;
+    color: #bec4ff;
+    font-size: 1.2rem; 
+    transition: 0.3s;  
+}
+
+/* modaal-iframeクラス以外のaタグにhover */
+a:not(.modaal-iframe):hover{
+  display: inline-block;
+  transform: scale(1.1);
+  color:rgb(250, 255, 180); 
+}
+
+p{
+  font-size: 1.2rem;
+}
+
+/*ul liの黒ポチ無し*/
+ul li {
+    list-style: none;
+}
+
+/*Google Fonts の「Noto Sans JP」を使用します。*/
+
+/*コンテンツ幅 固定サイドメニューが300px分マージン*/
+/*共通となるmarginがこれとブロック要素中央寄せの2つ必要なのでcontainer+wrapperの2つ必要*/
+.container{
+    margin-left: 300px;
+}
+
+/*メインコンテンツの最大幅は900px、横のパディングは20pxです。*/
+.wrapper{
+    max-width: 900px;
+    padding: 0 20px;
+    margin: 0 auto; /*ブロック要素自体の中央寄せ*/
+    font-size: 0.9rem;
+    box-sizing: border-box; /*はみ出し防止*/
+    margin-bottom: 60px;
+}
+
+/*セクションタイトル*/
+/*両サイドのラインは疑似要素before::(左),after::(右)で作成して、Flexで横並び*/
+.sec-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    margin-bottom: 60px;
+    text-align: center;
+    color: rgb(250, 255, 180);
+}
+  .sec-title::before,
+  .sec-title::after {
+    border-top: 1px solid;
+    content: ""; /*ラインだけあればよいのでcontentは空.プロパティ自体は必要*/
+    width: 28%;
+}
+
+.sub-title{
+  font-size: 1.5rem;
+  color: rgb(180, 255, 220);
+  text-decoration: underline;
+}
+
+/*-------------------------------------------
+説明の表
+-------------------------------------------*/
+dl{
+  display: flex;
+  font-size: 1.2rem;
+  border: 1px solid ;
+  flex-wrap: wrap;
+}
+
+dt{
+  width: 15%;
+  text-align: center;
+  color: rgb(180, 255, 220);
+  border-bottom: 1px solid;
+}
+
+dd{
+  width: 82%;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+  padding-left: 2%;
+}
+
+/*-------------------------------------------
+header　ヘッダー
+-------------------------------------------*/
+/*サイドメニュー
+300pxで固定します。レスポンシブ時も横幅を伸縮させません。スマホ時はハンバーガーメニューに切り替えます。*/
+.header {
+    /*幅高さを縦長にしつつ、positionでtop固定することでサイドメニューレイアウトに*/
+    width: 320px; /*サイドメニュー幅 width固定*/
+    height: 100%; /*サイドメニュー高さウィンドウサイズ100%*/
+    position: fixed; /*位置固定*/
+    top: 0; /*画面最上部。縦長コンテンツだからこれだけでサイドメニューになる*/
+    background-color: rgb(23, 27, 44);
+    padding: 40px 50px 30px 45px;
+    /* 画面の高さが低くてメニューが隠れてしまった場合に、縦スクロールが出るよう設定*/
+    overflow-y: auto;
+    box-sizing: border-box; /*はみ出し防止*/
+}
+
+.header .nav-menu {
+    margin-bottom: 60px;
+}
+
+/*aタグの装飾なし+色変更*/
+.nav-menu a{
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.header li {
+    font-size: 0.875rem;
+    padding: 8px 0;
+    transition: 0.3s;
+}
+
+.header li:hover{
+  transform: scale(1.1);
+}
+
+.site-logo{
+  display: flex;
+  margin-bottom: 30px;
+  justify-content: start; 
+  position: relative;
+}
+
+/*サイトタイトル*/
+.site-title {
+  width: 200px;
+  font-size: 2.3rem;
+  color: rgb(250, 255, 180);
+}
+
+.logo-image{
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  top: 20%;
+  right: 1%;
+}
+
+.logo-image img{
+  object-fit: cover;
+}
+
+
+
+/*-------------------------------------------
+video
+-------------------------------------------*/
+/*動画 全幅で背景に固定します。*/
+/*動画を全画面表示*/
+.video {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+}
+/*「position: fixed;」で動画を固定し、「top: -220px;」で表示位置を調整
+z-indexでマイナスを設定して、他のコンテンツの下＝背景化*/
+.bg-video {
+    position: fixed;
+    top: 0px;
+    z-index: -10;
+}
+
+/*-------------------------------------------
+about/Usage
+-------------------------------------------*/
+
+.usage li{
+font-size: 1.2rem;
+}
+
+
+/*-------------------------------------------
+categoly
+-------------------------------------------*/
+/*背景は徐々に暗くなるようグラデーションの透過を設定します。*/
+.categoly {
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.8));
+    color: #fff;
+  }
+
+.image-list{
+    display: flex;
+    flex-wrap: wrap; /*liが100%超えたら横並びを折り返す*/
+    justify-content: space-between;
+}
+
+/*親li(画像)上に子.nameを配置*/
+.image-list li{
+    width: 47%; /*2個で折り返し& 間隔踏まえて47%*/
+    border: solid 1px #fff; /**画像の白枠線はCSSで設定*/
+    margin-bottom: 50px;
+    position: relative; /*子.nameを画像上に表示するために親liにrelative*/
+    transition: 0.3s;
+}
+
+/*li画像ホバー時の動作*/
+.image-list li:hover{
+    transform: scale(1.1);
+    filter: brightness(140%);
+}
+
+/*li動画のサイズ等・要調整*/
+.image-list li video{
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+}
+
+/*li画像のサイズ等・要調整*/
+.image-list li img{
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+}
+
+.image-list li .name {
+    color:#fff;
+    font-size: 1rem;
+    /*親liに対する位置をabsolute(bottom,left,z-index)で指定*/
+    position: absolute;
+    bottom: 4px;
+    left: 7px;
+    z-index: 1; /*z-indexは多分1以上で画像上に表示*/
+}
+
+/* 「画像内のテキストの下に影をつけます」は
+疑似要素を使用して、aタグに「box-shadow」で影を付ける
+aタグでないとリンクが適切に動作しない*/
+.image-list li a::after {
+    content: ""; /*影だけなのでコンテンツは空*/
+    box-shadow: 0 -30px 15px -1px #2e2e2e inset;/*x,y,blur-radius,spread-radius,inset内側*/
+    /*親に対するabsolote(top0,left0,right0,bottom0).なぜこの数字かはイマイチピンときてないが、影の場合はピッタリ併せないと見えないのかも知れん*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/*-------------------------------------------
+doc配下html用
+-------------------------------------------*/
+.star-description-container{
+  display: flex;
+  flex-wrap: wrap; /*子要素のstar-description, star-imgが合計100%以上で折り返し*/
+}
+
+.star-description{
+  width: 60%;
+  margin-left: 1%;
+}
+
+/*doc配下の各星説明ページの画像*/
+.star-img{ /*div 中央寄せするにはdivの必要がありそう*/
+  width: 35%;
+  height: 30vh;
+  object-fit: cover;
+  margin: 0 auto; /*中央寄せ*/
+}
+
+.star-img img{
+  border: solid 1px #fff; /**画像の白枠線はCSSで設定*/
+}
+
+.star-img figcaption{
+  text-align: center;
+  margin: 0 auto;
+}
+
+/*-------------------------------------------
+footer フッター
+-------------------------------------------*/
+.footer {
+    background-color: #121212;
+    color: #fff;
+    padding: 20px 0;
+  }
+
+.footer p{
+    text-align: center;
+}
+
+.footer-menu{
+    display: flex;
+    justify-content: center;/*中央揃え*/
+}
+
+.footer-menu li{
+    border-right: solid 1px #fff;
+    font-size: 0.875rem;
+    padding: 0 20px;
+}
+
+/*-------------------------------------------
+トップへ戻るボタン
+cssでは黒色円と中の三角形描画。
+表示/非表示の切り替えとTOPへのアニメーションは「main.js」参照
+-------------------------------------------*/
+/*右下固定で黒色円を描画*/
+.to-top {
+    width: 50px;
+    height: 50px;
+    background-color: #121212;
+    border: solid 1px #fff;
+    border-radius: 50%;
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+  }
+  /* 中の三角。疑似要素で作成*/
+.to-top::after {
+    content: "";
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #fff;
+    position: relative;
+    left: 17px;
+    bottom: 3px;
+}
+
+
+/*-------------------------------------------
+レスポンシブ
+project, feature,contactは簡易実装(縦積みにして中央寄せにしてサイズ調整程度)
+-------------------------------------------*/
+/*ブレークポイントは960pxです。スマホの場合はヘッダーを上部に固定します。*/
+@media screen and (max-width: 960px) {
+    .container {
+      margin-left: 0;
+    }
+    .wrapper {
+      padding: 60px 20px;
+    }
+    .site-title {
+      width: 180px;
+      font-size: 2rem;
+      margin-bottom: 0;
+      position: relative;
+      left: 18px;
+      top: 10px;
+    }
+    .sec-title {
+      font-size: 2.0 rem;
+      margin-bottom: 30px;
+    }
+    .sec-title::before,
+    .sec-title::after {
+      width: 18%;
+    }
+
+    /*-------------------------------------------
+    ヘッダーSP
+    -------------------------------------------*/
+    /*headerは幅100%にしてtop表示に変更*/
+    .header {
+      width: 100%;
+      height: 72px;
+      padding: 0;
+      z-index: 10;
+    }
+
+    .logo-image{
+      opacity: 0;
+    }
+
+    /*navは-300px & opacity0で非表示*/
+    nav {
+        width: 300px;
+        background-color: rgb(23, 27, 44);
+        padding: 25px;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        bottom: 0;
+        opacity: 0;
+        overflow-y: auto;
+        transition: 0.5s;
+        z-index: 20;
+      }
+
+    nav ul.nav-menu {
+        margin-bottom: 30px;
+    }
+
+    nav ul li {
+        padding: 10px 0;
+    }
+
+    /*ハンバーガーメニュー表示*/
+    .hamburger {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        position: fixed;
+        top: 22px;
+        right: 18px;
+        transition: 0.5s;
+        z-index: 20;
+      }
+      .hamburger span {
+        width: 30px;
+        height: 2px;
+        background-color: #fff;
+        border-radius: 4px;
+        display: block;
+        position: absolute;
+        left: 0;
+        transition: 0.5s;
+      }
+      .hamburger span:nth-child(1) { /*バーガー線1本目*/
+        top: 4px;
+      }
+      .hamburger span:nth-child(2) { /*2本目*/
+        top: 14px;
+      }
+      .hamburger span:nth-child(3) { /*3本目*/
+        bottom: 4px;
+      }
+
+      #mask {
+        display: none;
+        transition: 0.5s;
+      }
+
+      /*.open = ハンバーガーメニュー押下時*/
+      .open .hamburger span {
+        background-color: #fff;
+      }
+      .open .hamburger span:nth-child(1) { /*バーガー線1本目回転アニメーション*/
+        transform: translateY(10px) rotate(-315deg);
+      }
+      .open .hamburger span:nth-child(2) {
+        opacity: 0;
+      }
+      .open .hamburger span:nth-child(3) { /*バーガー線3本目回転アニメーション*/
+        transform: translateY(-10px) rotate(315deg);
+      }
+
+      /*#maskで背景黒透過*/
+      .open #mask {
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        cursor: pointer;
+        display: block;
+        opacity: 0.8;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+
+      /*navをleft (-300から)0にし、opacity 1にして表示させる*/
+    .open nav  {
+      left: 0;
+      opacity: 1;
+    }
+
+/*-------------------------------------------
+project SP
+-------------------------------------------*/
+.project ul{
+    flex-direction: column; /*縦積み*/
+    text-align: center; /*中央寄せ*/
+}
+.project li{
+    width: 100%;
+}
+
+
+
+/*-------------------------------------------
+contact SP
+-------------------------------------------*/
+.contact-link{
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.contact-link a{
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+}
